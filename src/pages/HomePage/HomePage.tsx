@@ -1,7 +1,16 @@
 import React, { FC } from 'react'
 
-import { Button } from '../../components/Button/Button'
+import { HomeTop, HomeBtn } from './HomePage.styled'
 
 export const HomePage: FC = () => {
-	return <Button>test</Button>
+	return (
+		<main>
+			<div className="container">
+				<HomeTop>
+					<div className="home__search">Search by title</div>
+					<HomeBtn>Create post</HomeBtn>
+				</HomeTop>
+			</div>
+		</main>
+	)
 }

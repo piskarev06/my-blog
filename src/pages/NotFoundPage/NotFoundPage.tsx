@@ -4,8 +4,10 @@ import { NotFoundWrapper, NotFoundText } from './NotFoundPage.styled'
 
 export const NotFoundPage: FC = () => {
 	return (
-		<NotFoundWrapper>
-			<NotFoundText>not found page</NotFoundText>
-		</NotFoundWrapper>
+		<main>
+			<NotFoundWrapper>
+				<NotFoundText>not found page</NotFoundText>
+			</NotFoundWrapper>
+		</main>
 	)
 }

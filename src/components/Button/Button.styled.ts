@@ -8,17 +8,13 @@ interface ButtonStyledProps {
 }
 
 export const ButtonStyled = styled.button<ButtonStyledProps>`
-	display: inline-block;
-	padding: 18px 17px 25px;
+	display: block;
+	padding: 18px 25px 17px;
 
 	background: ${baseTheme.colors.accent};
 	cursor: pointer;
 	border-radius: 20px;
 	border: none;
-
-	font-weight: 500;
-	font-size: 16px;
-	line-height: 0px;
 
 	color: #ffffff;
 
