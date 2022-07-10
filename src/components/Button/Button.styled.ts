@@ -19,4 +19,11 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
 	color: #ffffff;
 
 	transition: all 0.3s linear;
+
+	${(props) =>
+		props.variant === 'delete' &&
+		`
+	color: rgba(255, 0, 0, 1);
+	border: 2px solid #FF0000;
+	 `}
 `

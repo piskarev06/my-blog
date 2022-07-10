@@ -1,15 +1,18 @@
 import React, { FC } from 'react'
+import { Post } from '../../components/Post/Post'
 
-import { HomeTop, HomeBtn } from './HomePage.styled'
+import { HomeTop, HomeBtn, HomeInput } from './HomePage.styled'
 
 export const HomePage: FC = () => {
 	return (
 		<main>
 			<div className="container">
 				<HomeTop>
-					<div className="home__search">Search by title</div>
+					<HomeInput placeholder="Search by title" />
 					<HomeBtn>Create post</HomeBtn>
 				</HomeTop>
+
+				<Post id={'sas'} title={'sasas'} description={'sdsdsdsd'}></Post>
 			</div>
 		</main>
 	)
