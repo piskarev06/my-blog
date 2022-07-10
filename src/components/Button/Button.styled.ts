@@ -14,8 +14,9 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
 	background: ${baseTheme.colors.accent};
 	cursor: pointer;
 	border-radius: 20px;
+	border: none;
 
-	ont-weight: 500;
+	font-weight: 500;
 	font-size: 16px;
 	line-height: 0px;
 
