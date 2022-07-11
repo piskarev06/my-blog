@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import { getPostById } from '../../api'
-import { PostType } from '../../types/types'
+import { PostType } from '../../store/posts/posts.types'
 
 import { PostTitle, PostInfo, InfoTitle, InfoDesc, PostBtn } from './PostPage.styled'
 

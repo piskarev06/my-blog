@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { useInput } from '../../hooks/useInput'
 
+import { useInput } from '../../hooks/useInput'
 import { CreateTitle, CreateInput, CreateInputs, CreateBtn, CreateError } from './CreatePost.styled'
 
 interface CreatePostProps {
