@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react'
 
 import { getAllPosts } from '../../api'
+import { CreatePost } from '../../components/CreatePost/CreatePost'
 import { Modal } from '../../components/Modal/Modal'
 import { PostList } from '../../components/PostList/PostList'
 import { HomeTop, HomeBtn, HomeInput } from './HomePage.styled'
@@ -26,7 +27,7 @@ export const HomePage: FC = () => {
 				<PostList posts={posts} />
 
 				<Modal active={activeModal} setActive={setActiveModal}>
-					test
+					<CreatePost />
 				</Modal>
 			</div>
 		</main>

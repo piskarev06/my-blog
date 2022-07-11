@@ -35,11 +35,11 @@ export const ModalStyled = styled.div<ModalStyledProps>`
 `
 
 export const ModalContent = styled.div<ModalContentProps>`
-	padding: 20px;
+	padding: 40px 40px 50px;
 
 	width: 50%;
 
-	border-radius: 12px;
+	border-radius: 20px;
 	background-color: #fff;
 
 	transform: scale(0.5);
