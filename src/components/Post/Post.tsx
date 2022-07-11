@@ -12,7 +12,7 @@ interface PostProps {
 
 export const Post: FC<PostProps> = ({ id, title, description }) => {
 	return (
-		<Link to={`/${id}`}>
+		<Link to={`/posts/${id}`}>
 			<PostStyled>
 				<div className="post__left">
 					<PostTitle>{title}</PostTitle>
@@ -20,8 +20,10 @@ export const Post: FC<PostProps> = ({ id, title, description }) => {
 				</div>
 
 				<PostRight>
-					<Button onClick={(e) => e.stopPropagation()}>Edit</Button>
-					<Button variant="delete">Delete</Button>
+					<Button onClick={(e) => e.preventDefault()}>Edit</Button>
+					<Button onClick={(e) => e.preventDefault()} variant="delete">
+						Delete
+					</Button>
 				</PostRight>
 			</PostStyled>
 		</Link>

@@ -27,7 +27,7 @@
 		"eject": "react-scripts eject",
 		"storybook": "start-storybook -p 6006 -s public",
 		"build-storybook": "build-storybook -s public",
-		"server": "json-server --watch db.json"
+		"server": "json-server --watch db.json --port 3004"
 	},
 	"eslintConfig": {
 		"extends": [

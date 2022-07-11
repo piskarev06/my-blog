@@ -96,6 +96,11 @@ input { /* 1 */
   overflow: visible;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 button,
 select { /* 1 */
   text-transform: none;

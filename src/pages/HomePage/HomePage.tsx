@@ -1,9 +1,18 @@
-import React, { FC } from 'react'
-import { Post } from '../../components/Post/Post'
+import React, { FC, useEffect, useState } from 'react'
 
+import { getAllPosts } from '../../api'
+import { PostList } from '../../components/PostList/PostList'
 import { HomeTop, HomeBtn, HomeInput } from './HomePage.styled'
 
 export const HomePage: FC = () => {
+	const [posts, setPosts] = useState([])
+
+	useEffect(() => {
+		getAllPosts().then((data) => {
+			setPosts(data)
+		})
+	}, [])
+
 	return (
 		<main>
 			<div className="container">
@@ -12,7 +21,7 @@ export const HomePage: FC = () => {
 					<HomeBtn>Create post</HomeBtn>
 				</HomeTop>
 
-				<Post id={'sas'} title={'sasas'} description={'sdsdsdsd'}></Post>
+				<PostList posts={posts} />
 			</div>
 		</main>
 	)
