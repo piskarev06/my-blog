@@ -30,3 +30,7 @@ export const CreateInputs = styled.div`
 export const CreateBtn = styled(ButtonStyled)`
 	width: 100%;
 `
+
+export const CreateError = styled.div`
+	color: #ff0000;
+`
