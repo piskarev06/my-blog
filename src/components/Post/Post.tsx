@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from '../Button/Button'
 
+import { Button } from '../Button/Button'
 import { PostDesc, PostRight, PostStyled, PostTitle } from './Post.styled'
 
 interface PostProps {
@@ -20,7 +20,7 @@ export const Post: FC<PostProps> = ({ id, title, description }) => {
 				</div>
 
 				<PostRight>
-					<Button>Edit</Button>
+					<Button onClick={(e) => e.stopPropagation()}>Edit</Button>
 					<Button variant="delete">Delete</Button>
 				</PostRight>
 			</PostStyled>
