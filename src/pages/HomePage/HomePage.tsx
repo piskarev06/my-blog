@@ -27,7 +27,7 @@ export const HomePage: FC = () => {
 				<PostList posts={posts} />
 
 				<Modal active={activeModal} setActive={setActiveModal}>
-					<CreatePost />
+					<CreatePost setActive={setActiveModal} />
 				</Modal>
 			</div>
 		</main>

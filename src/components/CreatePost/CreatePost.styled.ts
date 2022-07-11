@@ -4,6 +4,10 @@ import { baseTheme } from '../../styles/themes/baseTheme/baseTheme'
 import { InputStyled } from '../Input/Input.styled'
 import { ButtonStyled } from '../Button/Button.styled'
 
+interface CreateBtnProps {
+	disabled?: boolean
+}
+
 export const CreateTitle = styled.h2`
 	font-weight: 700;
 	font-size: 32px;
@@ -27,8 +31,14 @@ export const CreateInputs = styled.div`
 	margin-bottom: 30px;
 `
 
-export const CreateBtn = styled(ButtonStyled)`
+export const CreateBtn = styled(ButtonStyled)<CreateBtnProps>`
 	width: 100%;
+
+	${(props) =>
+		props.disabled === true &&
+		`
+	background: #80BDFF;
+	 `}
 `
 
 export const CreateError = styled.div`

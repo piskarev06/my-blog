@@ -3,15 +3,32 @@ import { useInput } from '../../hooks/useInput'
 
 import { CreateTitle, CreateInput, CreateInputs, CreateBtn, CreateError } from './CreatePost.styled'
 
-export const CreatePost: FC = () => {
+interface CreatePostProps {
+	setActive: (cond: boolean) => void
+}
+export const CreatePost: FC<CreatePostProps> = ({ setActive }) => {
 	const title = useInput('', { isEmpty: true, maxLenght: 12 })
 	const desc = useInput('', { isEmpty: true, maxLenght: 25 })
+	type TitleType = typeof title
+	type DescType = typeof desc
+
+	const onSubmit = (e: any, title: TitleType, desc: DescType) => {
+		e.preventDefault()
+		console.log(title.value, desc.value)
+
+		setActive(false)
+
+		title.setValue('')
+		title.setIsDerty(false)
+		desc.setValue('')
+		desc.setIsDerty(false)
+	}
 
 	return (
 		<>
 			<CreateTitle>Post</CreateTitle>
 
-			<form>
+			<form onSubmit={(e) => onSubmit(e, title, desc)}>
 				<CreateInputs>
 					{title.isDerty && title.isEmpty && <CreateError>Title must not be empty</CreateError>}
 					{title.isDerty && title.maxLenght && (
@@ -39,7 +56,12 @@ export const CreatePost: FC = () => {
 					/>
 				</CreateInputs>
 
-				<CreateBtn type="submit">Create post</CreateBtn>
+				<CreateBtn
+					disabled={desc.isEmpty || desc.maxLenght || title.isEmpty || title.maxLenght}
+					type="submit"
+				>
+					Create post
+				</CreateBtn>
 			</form>
 		</>
 	)
