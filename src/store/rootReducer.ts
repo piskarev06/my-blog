@@ -4,5 +4,4 @@ import { postsReducer } from './posts/postsReducer'
 
 export const rootReducer = combineReducers({
 	posts: postsReducer,
-	//   filters: filtersReducer,
 })

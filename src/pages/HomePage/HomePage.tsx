@@ -8,12 +8,28 @@ import { PostList } from '../../components/PostList/PostList'
 import { HomeTop, HomeBtn, HomeInput } from './HomePage.styled'
 import { getAllPostsAction } from '../../store/posts/postsActions'
 import { selectAllPosts } from '../../store/posts/postsSelectors'
+import { EditPost } from '../../components/EditPost/EditPost'
+import { PostType } from '../../store/posts/posts.types'
 
 export const HomePage: FC = () => {
 	const [activeModal, setActiveModal] = useState(false)
+	const [activeModalEdit, setActiveModalEdit] = useState(false)
+	const [currentPost, setCurrentPost] = useState({ id: 'init', title: 'init', description: 'init' })
 
 	const dispatch = useDispatch()
 	const posts = useSelector(selectAllPosts)
+
+	const handlerActive = (post: PostType) => {
+		setActiveModalEdit(true)
+		console.log(post)
+
+		setCurrentPost({
+			id: post.id,
+			title: post.title,
+			description: post.description,
+		})
+		console.log(currentPost)
+	}
 
 	useEffect(() => {
 		getAllPosts().then((data) => {
@@ -29,10 +45,14 @@ export const HomePage: FC = () => {
 					<HomeBtn onClick={() => setActiveModal(true)}>Create post</HomeBtn>
 				</HomeTop>
 
-				<PostList posts={posts} />
+				<PostList posts={posts} handlerActive={handlerActive} />
 
 				<Modal active={activeModal} setActive={setActiveModal}>
 					<CreatePost setActive={setActiveModal} />
+				</Modal>
+
+				<Modal active={activeModalEdit} setActive={setActiveModalEdit}>
+					<EditPost currentPost={currentPost} setActive={setActiveModalEdit} />
 				</Modal>
 			</div>
 		</main>

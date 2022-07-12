@@ -6,14 +6,16 @@ import { Button } from '../Button/Button'
 import { PostDesc, PostRight, PostStyled, PostTitle } from './Post.styled'
 import { deletePostAction } from '../../store/posts/postsActions'
 import { deletePost } from '../../api'
+import { PostType } from '../../store/posts/posts.types'
 
 interface PostProps {
 	id: string
 	title: string
 	description: string
+	handlerActive: (post: PostType) => void
 }
 
-export const Post: FC<PostProps> = ({ id, title, description }) => {
+export const Post: FC<PostProps> = ({ id, title, description, handlerActive }) => {
 	const dispatch = useDispatch()
 
 	const handlerDelete = (e: any, id: string) => {
@@ -21,6 +23,12 @@ export const Post: FC<PostProps> = ({ id, title, description }) => {
 
 		deletePost(id)
 		dispatch(deletePostAction(id))
+	}
+
+	const handlerEdit = (e: any, post: PostType) => {
+		e.preventDefault()
+
+		handlerActive(post)
 	}
 
 	return (
@@ -32,7 +40,11 @@ export const Post: FC<PostProps> = ({ id, title, description }) => {
 				</div>
 
 				<PostRight>
-					<Button onClick={(e) => e.preventDefault()}>Edit</Button>
+					<Button
+						onClick={(e) => handlerEdit(e, { id: id, title: title, description: description })}
+					>
+						Edit
+					</Button>
 					<Button onClick={(e) => handlerDelete(e, id)} variant="delete">
 						Delete
 					</Button>
