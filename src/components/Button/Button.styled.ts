@@ -29,4 +29,10 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
 	border: 2px solid #FF0000;
 	background: none;
 	 `}
+
+	@media (max-width: 480px) {
+		padding: 18px 20px 17px;
+
+		font-size: 16px;
+	}
 `

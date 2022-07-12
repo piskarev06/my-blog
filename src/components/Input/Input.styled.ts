@@ -11,4 +11,8 @@ export const InputStyled = styled.input`
 	color: #818c99;
 	border: 1px solid ${baseTheme.colors.lightGray};
 	border-radius: 15px;
+
+	@media (max-width: 600px) {
+		padding: 15px;
+	}
 `

@@ -34,4 +34,9 @@ export const PostDesc = styled.p`
 export const PostRight = styled.div`
 	display: flex;
 	gap: 20px;
+
+	@media (max-width: 480px) {
+		flex-direction: column;
+		gap: 10px;
+	}
 `

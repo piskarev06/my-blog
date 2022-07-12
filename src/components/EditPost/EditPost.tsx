@@ -20,8 +20,6 @@ interface EditPostProps {
 export const EditPost: FC<EditPostProps> = ({ currentPost, setActive }) => {
 	const dispatch = useDispatch()
 
-	console.log(currentPost, 'edit')
-
 	const title = useInput(currentPost.title, {
 		isEmpty: true,
 		maxLenght: 12,
