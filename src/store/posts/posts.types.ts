@@ -1,4 +1,4 @@
-import { GET_ALL_POSTS, ADD_POST, DELETE_POST } from './postsConstans'
+import { GET_ALL_POSTS, ADD_POST, DELETE_POST, EDIT_POST } from './postsConstans'
 
 export interface PostType {
 	id: string
@@ -21,4 +21,9 @@ interface DeletePost {
 	id: string
 }
 
-export type PostsAction = GetAllPosts | AddPost | DeletePost
+interface EditPost {
+	type: typeof EDIT_POST
+	post: PostType
+}
+
+export type PostsAction = GetAllPosts | AddPost | DeletePost | EditPost

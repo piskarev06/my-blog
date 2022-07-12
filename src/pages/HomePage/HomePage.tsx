@@ -14,7 +14,7 @@ import { PostType } from '../../store/posts/posts.types'
 export const HomePage: FC = () => {
 	const [activeModal, setActiveModal] = useState(false)
 	const [activeModalEdit, setActiveModalEdit] = useState(false)
-	const [currentPost, setCurrentPost] = useState({ id: 'init', title: 'init', description: 'init' })
+	const [currentPost, setCurrentPost] = useState<PostType>()
 
 	const dispatch = useDispatch()
 	const posts = useSelector(selectAllPosts)
@@ -23,11 +23,7 @@ export const HomePage: FC = () => {
 		setActiveModalEdit(true)
 		console.log(post)
 
-		setCurrentPost({
-			id: post.id,
-			title: post.title,
-			description: post.description,
-		})
+		setCurrentPost(post)
 		console.log(currentPost)
 	}
 
@@ -35,7 +31,7 @@ export const HomePage: FC = () => {
 		getAllPosts().then((data) => {
 			dispatch(getAllPostsAction(data))
 		})
-	}, [])
+	}, [dispatch])
 
 	return (
 		<main>
@@ -52,7 +48,9 @@ export const HomePage: FC = () => {
 				</Modal>
 
 				<Modal active={activeModalEdit} setActive={setActiveModalEdit}>
-					<EditPost currentPost={currentPost} setActive={setActiveModalEdit} />
+					{activeModalEdit && (
+						<EditPost currentPost={currentPost!} setActive={setActiveModalEdit} />
+					)}
 				</Modal>
 			</div>
 		</main>

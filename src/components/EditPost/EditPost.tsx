@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { createNewPost } from '../../api'
+import { editPost } from '../../api'
 import { useInput } from '../../hooks/useInput'
 import {
 	CreateTitle,
@@ -10,7 +10,7 @@ import {
 	CreateBtn,
 	CreateError,
 } from '../CreatePost/CreatePost.styled'
-import { addPostAction } from '../../store/posts/postsActions'
+import { editPostAction } from '../../store/posts/postsActions'
 import { PostType } from '../../store/posts/posts.types'
 
 interface EditPostProps {
@@ -20,18 +20,27 @@ interface EditPostProps {
 export const EditPost: FC<EditPostProps> = ({ currentPost, setActive }) => {
 	const dispatch = useDispatch()
 
-	const title = useInput(currentPost.title, { isEmpty: true, maxLenght: 12 })
-	const desc = useInput(currentPost.description, { isEmpty: true, maxLenght: 25 })
+	console.log(currentPost, 'edit')
+
+	const title = useInput(currentPost.title, {
+		isEmpty: true,
+		maxLenght: 12,
+	})
+	const desc = useInput(currentPost.description, {
+		isEmpty: true,
+		maxLenght: 25,
+	})
+
 	type TitleType = typeof title
 	type DescType = typeof desc
 
 	const onSubmit = (e: any, title: TitleType, desc: DescType) => {
 		e.preventDefault()
 
-		// let post = { id: uuid(), title: title.value, description: desc.value }
-		// createNewPost(post)
+		let post = { id: currentPost.id, title: title.value, description: desc.value }
+		editPost(post)
 
-		// dispatch(addPostAction(post))
+		dispatch(editPostAction(post))
 
 		setActive(false)
 
