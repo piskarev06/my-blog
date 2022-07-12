@@ -1,12 +1,18 @@
 import React, { FC } from 'react'
+import { v4 as uuid } from 'uuid'
+import { useDispatch } from 'react-redux'
 
+import { createNewPost } from '../../api'
 import { useInput } from '../../hooks/useInput'
 import { CreateTitle, CreateInput, CreateInputs, CreateBtn, CreateError } from './CreatePost.styled'
+import { addPost } from '../../store/posts/postsActions'
 
 interface CreatePostProps {
 	setActive: (cond: boolean) => void
 }
 export const CreatePost: FC<CreatePostProps> = ({ setActive }) => {
+	const dispatch = useDispatch()
+
 	const title = useInput('', { isEmpty: true, maxLenght: 12 })
 	const desc = useInput('', { isEmpty: true, maxLenght: 25 })
 	type TitleType = typeof title
@@ -14,7 +20,11 @@ export const CreatePost: FC<CreatePostProps> = ({ setActive }) => {
 
 	const onSubmit = (e: any, title: TitleType, desc: DescType) => {
 		e.preventDefault()
-		console.log(title.value, desc.value)
+
+		let post = { id: uuid(), title: title.value, description: desc.value }
+		createNewPost(post)
+
+		dispatch(addPost(post))
 
 		setActive(false)
 

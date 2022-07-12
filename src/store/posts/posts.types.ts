@@ -1,4 +1,4 @@
-import { GET_ALL_POSTS } from './postsConstans'
+import { GET_ALL_POSTS, ADD_POST } from './postsConstans'
 
 export interface PostType {
 	id: string
@@ -11,4 +11,9 @@ interface GetAllPosts {
 	posts: PostType[]
 }
 
-export type PostsAction = GetAllPosts
+interface AddPost {
+	type: typeof ADD_POST
+	post: PostType
+}
+
+export type PostsAction = GetAllPosts | AddPost

@@ -1,24 +1,29 @@
 {
-	"posts": [
-		{
-			"id": 1,
-			"title": "test 1",
-			"description": "description 1"
-		},
-		{
-			"id": 2,
-			"title": "test 2",
-			"description": "description 2"
-		},
-		{
-			"id": 3,
-			"title": "test 3",
-			"description": "description 3"
-		},
-		{
-			"id": 4,
-			"title": "test 4",
-			"description": "description 4"
-		}
-	]
+  "posts": [
+    {
+      "id": 1,
+      "title": "test 1",
+      "description": "description 1"
+    },
+    {
+      "id": "6b81194b-8653-4935-ab60-cc530e79dd30",
+      "title": "sfdsf",
+      "description": "dsfsdfdsf"
+    },
+    {
+      "id": "232ad60c-e50d-4544-97f3-4144fc623c36",
+      "title": "wwwwwwwwww",
+      "description": "wwwwwwwwwwwwwwwwwwwwwww"
+    },
+    {
+      "id": "4dfcbebf-f0fd-45c7-99f8-cbfcc9eb59f9",
+      "title": "asdddd",
+      "description": "ddddddddddddddddd"
+    },
+    {
+      "id": "75fdcd16-c92f-4d10-ad90-e71b76820bcb",
+      "title": "sdasdsad",
+      "description": "sadsadas"
+    }
+  ]
 }
