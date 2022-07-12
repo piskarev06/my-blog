@@ -18,3 +18,8 @@ export const createNewPost = async (post: PostType) => {
 	const res = await axios.post(url, post)
 	return res
 }
+
+export const deletePost = async (id: string) => {
+	const res = await axios.delete(url + '/' + id)
+	return res
+}

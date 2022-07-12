@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { createNewPost } from '../../api'
 import { useInput } from '../../hooks/useInput'
 import { CreateTitle, CreateInput, CreateInputs, CreateBtn, CreateError } from './CreatePost.styled'
-import { addPost } from '../../store/posts/postsActions'
+import { addPostAction } from '../../store/posts/postsActions'
 
 interface CreatePostProps {
 	setActive: (cond: boolean) => void
@@ -24,7 +24,7 @@ export const CreatePost: FC<CreatePostProps> = ({ setActive }) => {
 		let post = { id: uuid(), title: title.value, description: desc.value }
 		createNewPost(post)
 
-		dispatch(addPost(post))
+		dispatch(addPostAction(post))
 
 		setActive(false)
 
