@@ -4,7 +4,7 @@ import { baseTheme } from '../../styles/themes/baseTheme/baseTheme'
 
 export const InputStyled = styled.input`
 	padding: 25px;
-	height: 50px;
+	max-height: 50px;
 
 	line-height: 0px;
 
