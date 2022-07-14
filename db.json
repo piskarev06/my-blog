@@ -1,11 +1,6 @@
 {
   "posts": [
     {
-      "id": "1faee3b7-3cef-4c00-b15a-efc14d01272b",
-      "title": "React",
-      "description": "Lorem ipsum dolor sit dol"
-    },
-    {
       "id": "cb000a11-b877-40bb-b544-34e21ef921f3",
       "title": "Redux",
       "description": "Lorem ipsum lorem ipsum "
@@ -19,6 +14,11 @@
       "id": "cfd37419-0bde-4dbf-a897-1f5ecbf68695",
       "title": "Nest",
       "description": "Lorem ipsum Lorem ipsum "
+    },
+    {
+      "id": "97069ddb-86aa-46cd-aea9-2550e783ec9f",
+      "title": "React",
+      "description": "Lorem ipsum lorem ipsum "
     }
   ]
 }

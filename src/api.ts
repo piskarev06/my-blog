@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { PostType } from './store/posts/posts.types'
 
-const url = 'http://localhost:3004/posts'
+const url = 'https://my-blogserver.herokuapp.com/posts'
 
 export const getAllPosts = async () => {
 	const res = await fetch(url)

@@ -12,7 +12,7 @@ import { store } from './store'
 export const App: FC = () => {
 	return (
 		<Provider store={store}>
-			<BrowserRouter>
+			<BrowserRouter basename="/my-blog">
 				<ThemeProvider theme={baseTheme}>
 					<Header />
 					<Routes />
