@@ -7,9 +7,10 @@ import { Modal } from '../../components/Modal/Modal'
 import { PostList } from '../../components/PostList/PostList'
 import { HomeTop, HomeBtn, HomeInput } from './HomePage.styled'
 import { getAllPostsAction } from '../../store/posts/postsActions'
-import { selectAllPosts } from '../../store/posts/postsSelectors'
+import { selectVisiblePosts } from '../../store/posts/postsSelectors'
 import { EditPost } from '../../components/EditPost/EditPost'
 import { PostType } from '../../store/posts/posts.types'
+import { addSearchAction } from '../../store/search/searchActions'
 
 export const HomePage: FC = () => {
 	const [activeModal, setActiveModal] = useState(false)
@@ -17,7 +18,7 @@ export const HomePage: FC = () => {
 	const [currentPost, setCurrentPost] = useState<PostType>()
 
 	const dispatch = useDispatch()
-	const posts = useSelector(selectAllPosts)
+	const posts = useSelector(selectVisiblePosts)
 
 	const handlerActive = (post: PostType) => {
 		setActiveModalEdit(true)
@@ -25,6 +26,10 @@ export const HomePage: FC = () => {
 
 		setCurrentPost(post)
 		console.log(currentPost)
+	}
+
+	const handlerSearch = (e: any) => {
+		dispatch(addSearchAction(e.target.value))
 	}
 
 	useEffect(() => {
@@ -37,7 +42,7 @@ export const HomePage: FC = () => {
 		<main>
 			<div className="container">
 				<HomeTop>
-					<HomeInput placeholder="Search by title" />
+					<HomeInput onChange={(e) => handlerSearch(e)} placeholder="Search by title" />
 					<HomeBtn onClick={() => setActiveModal(true)}>Create post</HomeBtn>
 				</HomeTop>
 
