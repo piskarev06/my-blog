@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import { getPostById } from '../../api'
+import { Preloader } from '../../components/Preloader/Preloader'
 import { PostType } from '../../store/posts/posts.types'
 
 import { PostTitle, PostInfo, InfoTitle, InfoDesc, PostBtn } from './PostPage.styled'
@@ -9,8 +10,7 @@ export const PostPage: FC = () => {
 	const { id } = useParams()
 	const navigate = useNavigate()
 
-	const initialPost: PostType = { id: 'init', title: 'init', description: 'init' }
-	const [post, setPost] = useState(initialPost)
+	const [post, setPost] = useState<PostType>()
 
 	useEffect(() => {
 		getPostById(id!).then((data) => {
@@ -23,7 +23,7 @@ export const PostPage: FC = () => {
 	return (
 		<main>
 			<div className="container">
-				{post.id !== 'init' && (
+				{post ? (
 					<>
 						<PostTitle>Post</PostTitle>
 						<PostInfo>
@@ -32,6 +32,8 @@ export const PostPage: FC = () => {
 						</PostInfo>
 						<PostBtn onClick={() => navigate(-1)}>Go Back</PostBtn>
 					</>
+				) : (
+					<Preloader />
 				)}
 			</div>
 		</main>

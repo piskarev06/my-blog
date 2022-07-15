@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { PostType } from '../../store/posts/posts.types'
 import { Post } from '../Post/Post'
-import { PostListStyled } from './PostList.styled'
+import { PostListStyled, PostListWarning } from './PostList.styled'
 
 interface PostListProps {
 	posts: PostType[]
@@ -12,7 +12,7 @@ interface PostListProps {
 export const PostList: FC<PostListProps> = ({ posts, handlerActive }) => {
 	return (
 		<PostListStyled>
-			{posts !== [] ? (
+			{posts.length > 0 ? (
 				posts.map((el) => {
 					return (
 						<Post
@@ -25,7 +25,7 @@ export const PostList: FC<PostListProps> = ({ posts, handlerActive }) => {
 					)
 				})
 			) : (
-				<div>create a post</div>
+				<PostListWarning>Please, create a post</PostListWarning>
 			)}
 		</PostListStyled>
 	)
