@@ -50,4 +50,12 @@ export const ModalContent = styled.div<ModalContentProps>`
 		`
         transform: scale(1);
 	 `}
+
+	@media (max-width: 770px) {
+		padding: 30px 30px 40px;
+		width: 80%;
+	}
+	@media (max-width: 480px) {
+		width: 90%;
+	}
 `
