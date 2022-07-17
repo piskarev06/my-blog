@@ -14,9 +14,7 @@ export const PostPage: FC = () => {
 
 	useEffect(() => {
 		getPostById(id!).then((data) => {
-			console.log(data)
-
-			setPost(data)
+			setPost(data.data)
 		})
 	}, [id])
 

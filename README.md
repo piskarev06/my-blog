@@ -54,7 +54,6 @@ npm start
 │   ├── index.tsx
 ├── .gitignore
 ├── .prettierrc
-├── db.json
 ├── package-lock.json
 ├── package.json
 ├── tsconfig.json
@@ -66,7 +65,6 @@ npm start
 ## ★ Live demo:
 
 ### https://piskarev06.github.io/my-blog/
-
 
 <br />
 <br />

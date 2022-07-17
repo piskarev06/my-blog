@@ -11,21 +11,25 @@ import { selectVisiblePosts } from '../../store/posts/postsSelectors'
 import { EditPost } from '../../components/EditPost/EditPost'
 import { PostType } from '../../store/posts/posts.types'
 import { addSearchAction } from '../../store/search/searchActions'
+import { getPageCount, getPagesArray } from '../../utils/pages'
+import { PaginationList } from '../../components/PaginationList/PaginationList'
 
 export const HomePage: FC = () => {
-	const [activeModal, setActiveModal] = useState(false)
-	const [activeModalEdit, setActiveModalEdit] = useState(false)
+	const [activeModal, setActiveModal] = useState<boolean>(false)
+	const [activeModalEdit, setActiveModalEdit] = useState<boolean>(false)
 	const [currentPost, setCurrentPost] = useState<PostType>()
+	const [totalPages, setTotalPages] = useState<number>(0)
+	const [limit, setLimit] = useState<number>(4)
+	const [page, setPage] = useState<number>(1)
+	const pagesArray = getPagesArray(totalPages)
 
 	const dispatch = useDispatch()
 	const posts = useSelector(selectVisiblePosts)
 
 	const handlerActive = (post: PostType) => {
 		setActiveModalEdit(true)
-		console.log(post)
 
 		setCurrentPost(post)
-		console.log(currentPost)
 	}
 
 	const handlerSearch = (e: any) => {
@@ -33,10 +37,13 @@ export const HomePage: FC = () => {
 	}
 
 	useEffect(() => {
-		getAllPosts().then((data) => {
-			dispatch(getAllPostsAction(data))
+		getAllPosts(limit, page).then((data) => {
+			dispatch(getAllPostsAction(data.data))
+
+			const totalCount = +data.headers['x-total-count']
+			setTotalPages(getPageCount(totalCount, limit))
 		})
-	}, [dispatch])
+	}, [dispatch, page])
 
 	return (
 		<main>
@@ -47,6 +54,8 @@ export const HomePage: FC = () => {
 				</HomeTop>
 
 				<PostList posts={posts} handlerActive={handlerActive} />
+
+				<PaginationList setPage={setPage} pagesArray={pagesArray} page={page} />
 
 				<Modal active={activeModal} setActive={setActiveModal}>
 					<CreatePost setActive={setActiveModal} />

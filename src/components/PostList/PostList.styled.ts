@@ -7,6 +7,8 @@ export const PostListStyled = styled.ul`
 	flex-direction: column;
 	gap: 20px;
 
+	margin-bottom: 45px;
+
 	@media (max-width: 480px) {
 		gap: 10px;
 	}
